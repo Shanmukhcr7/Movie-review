@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinePulse - Movie Blog</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">CinePulse</a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Awards <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="vote.html">Vote</a>
+                        <a href="#">Past Winners (Dummy)</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Media <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="news.html">News</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                </li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="user-auth-section">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="user-info">
+                <span id="welcome-message"></span>
+                <button id="auth-button">Login / Register</button>
+            </div>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <div class="ticker-wrapper">
+        <div class="ticker-content">
+            <span><i class="fas fa-star"></i> Latest Review: "Interstellar" - A mind-bending masterpiece!</span>
+            <span><i class="fas fa-fire"></i> Trending: "Dune: Part Two" breaking box office records!</span>
+            <span><i class="fas fa-film"></i> New Trailer: "Blade Runner 2099" is coming soon!</span>
+            <span><i class="fas fa-trophy"></i> Awards Update: Nominations for Best Director unveiled!</span>
+            <span><i class="fas fa-star"></i> Latest Review: "The Matrix" - Still iconic after all these years!</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <section>
+            <h2 class="section-heading">CinePulse Blog</h2>
+            <div class="blog-grid" id="blogGrid">
+                </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CinePulse. All rights reserved. Designed with <i class="fas fa-heart" style="color: red;"></i> by YourName.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogData = [
+                {
+                    title: "The Evolution of Superhero Films: From Pulp to Prestige",
+                    summary: "Explore how superhero movies have transformed over decades, from niche comics to dominant cinematic forces, impacting storytelling and special effects.",
+                    image: "assets/images/blog15.jpg" // Updated path
+                },
+                {
+                    title: "Behind the Scenes: The Art of Movie Sound Design",
+                    summary: "A deep dive into the often-overlooked world of sound design in films, revealing how audio elements create immersive experiences.",
+                    image: "assets/images/blog16.jpg" // Updated path
+                },
+                {
+                    title: "From Book to Screen: Adapting Beloved Novels",
+                    summary: "Discussing the challenges and triumphs of bringing literary masterpieces to the big screen, and what makes an adaptation successful.",
+                    image: "assets/images/blog17.jpg" // Updated path
+                },
+                {
+                    title: "The Impact of AI on Filmmaking: A Glimpse into the Future",
+                    summary: "How artificial intelligence is beginning to influence various aspects of film production, from scriptwriting to visual effects.",
+                    image: "assets/images/blog18.jpg" // Updated path
+                }
+            ];
+
+            const blogGrid = document.getElementById('blogGrid');
+
+            blogData.forEach(blog => {
+                const blogCard = document.createElement('div');
+                blogCard.classList.add('blog-card');
+                blogCard.innerHTML = `
+                    <img src="${blog.image}" alt="${blog.title}">
+                    <div class="blog-card-info">
+                        <h3>${blog.title}</h3>
+                        <p>${blog.summary}</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                blogGrid.appendChild(blogCard);
+            });
+        });
+    </script>
+</body>
+</html>

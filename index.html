@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinePulse - Your Ultimate Movie Hub</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">CinePulse</a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Awards <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="vote.html">Vote</a>
+                        <a href="#">Past Winners (Dummy)</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Media <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="news.html">News</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                </li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="user-auth-section">
+            <div class="social-icons">
+    <a href="https://www.facebook.com/shanmukh.single?mibextid=rS40aB7S9Ucbxw6v" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://x.com/Shanmukcr7" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com/shanmukh_15m?igsh=cjlzajQ5emUzc3Zz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+</div>
+            <div class="user-info">
+                <span id="welcome-message"></span>
+                <button id="auth-button">Login / Register</button>
+            </div>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <div class="ticker-wrapper">
+        <div class="ticker-content">
+            <span><i class="fas fa-star"></i> Latest Review: "Interstellar" - A mind-bending masterpiece!</span>
+            <span><i class="fas fa-fire"></i> Trending: "Dune: Part Two" breaking box office records!</span>
+            <span><i class="fas fa-film"></i> New Trailer: "Blade Runner 2099" is coming soon!</span>
+            <span><i class="fas fa-trophy"></i> Awards Update: Nominations for Best Director unveiled!</span>
+            <span><i class="fas fa-star"></i> Latest Review: "The Matrix" - Still iconic after all these years!</span>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-slider">
+                <img src="assets/images/hero1.jpg" alt="Movie Scene 1" class="active">
+                <img src="assets/images/hero2.jpg" alt="Movie Scene 2">
+                <img src="assets/images/hero3.jpg" alt="Movie Scene 3">
+            </div>
+            <div class="hero-overlay">
+                <h1 id="hero-title">Welcome to CinePulse</h1>
+                <p id="hero-description">Your ultimate destination for movie ratings, reviews, news, and awards voting. Dive into the world of cinema!</p>
+                <a href="reviews.html" class="btn">Discover Movies</a>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2 class="section-heading">Top Rated Movies</h2>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="assets/images/movie1.jpg" alt="Movie Poster 1">
+                    <div class="movie-card-info">
+                        <h3>Inception</h3>
+                        <div class="movie-card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.8</span>
+                        </div>
+                        <p>A thief who steals corporate secrets through use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
+                        <div class="movie-card-actions">
+                            <a href="reviews.html" class="btn">Review</a>
+                            <span>(120 Reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="assets/images/movie2.jpg" alt="Movie Poster 2">
+                    <div class="movie-card-info">
+                        <h3>The Dark Knight</h3>
+                        <div class="movie-card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                        <p>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
+                        <div class="movie-card-actions">
+                            <a href="reviews.html" class="btn">Review</a>
+                            <span>(150 Reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="assets/images/movie3.jpg" alt="Movie Poster 3">
+                    <div class="movie-card-info">
+                        <h3>Interstellar</h3>
+                        <div class="movie-card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.7</span>
+                        </div>
+                        <p>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>
+                        <div class="movie-card-actions">
+                            <a href="reviews.html" class="btn">Review</a>
+                            <span>(110 Reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="assets/images/movie4.jpg" alt="Movie Poster 4">
+                    <div class="movie-card-info">
+                        <h3>Pulp Fiction</h3>
+                        <div class="movie-card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.6</span>
+                        </div>
+                        <p>The lives of two mob hitmen, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</p>
+                        <div class="movie-card-actions">
+                            <a href="reviews.html" class="btn">Review</a>
+                            <span>(95 Reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2 class="section-heading">Latest News & Blogs</h2>
+            <div class="news-blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="news-card">
+                    <img src="assets/images/news1.jpg" alt="News Image">
+                    <div class="news-card-info">
+                        <h3>New Marvel Phase 5 Details Revealed</h3>
+                        <p>Exciting new information about the next phase of the Marvel Cinematic Universe has been released, promising new heroes and thrilling storylines.</p>
+                        <a href="news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="assets/images/blog1.jpg" alt="Blog Image">
+                    <div class="blog-card-info">
+                        <h3>Top 10 Underrated Sci-Fi Movies You Must Watch</h3>
+                        <p>Dive into our list of hidden gems in the science fiction genre that deserve more recognition. You might find your new favorite!</p>
+                        <a href="blog.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CinePulse. All rights reserved. Designed with <i class="fas fa-heart" style="color: red;"></i> by YourName.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Hero Slider Logic
+        const heroImages = document.querySelectorAll('.hero-slider img');
+        const heroTitles = [
+            "Welcome to CinePulse",
+            "Rate & Review Your Favorites",
+            "Vote for Film Awards"
+        ];
+        const heroDescriptions = [
+            "Your ultimate destination for movie ratings, reviews, news, and awards voting. Dive into the world of cinema!",
+            "Share your thoughts on the latest blockbusters and timeless classics. Your opinion matters!",
+            "Participate in the annual CinePulse Awards! Cast your vote for Best Actor, Director, and Film."
+        ];
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            heroImages.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+            document.getElementById('hero-title').textContent = heroTitles[index];
+            document.getElementById('hero-description').textContent = heroDescriptions[index];
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % heroImages.length;
+            showSlide(currentSlide);
+        }
+
+        // Initialize slider
+        showSlide(currentSlide);
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    </script>
+</body>
+</html>

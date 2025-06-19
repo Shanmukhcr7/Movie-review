@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinePulse - Submit a Review</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">CinePulse</a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Awards <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="vote.html">Vote</a>
+                        <a href="#">Past Winners (Dummy)</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Media <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="news.html">News</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                </li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="user-auth-section">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="user-info">
+                <span id="welcome-message"></span>
+                <button id="auth-button">Login / Register</button>
+            </div>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <div class="ticker-wrapper">
+        <div class="ticker-content">
+            <span><i class="fas fa-star"></i> Latest Review: "Interstellar" - A mind-bending masterpiece!</span>
+            <span><i class="fas fa-fire"></i> Trending: "Dune: Part Two" breaking box office records!</span>
+            <span><i class="fas fa-film"></i> New Trailer: "Blade Runner 2099" is coming soon!</span>
+            <span><i class="fas fa-trophy"></i> Awards Update: Nominations for Best Director unveiled!</span>
+            <span><i class="fas fa-star"></i> Latest Review: "The Matrix" - Still iconic after all these years!</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="review-form">
+            <h2>Submit Your Movie Review</h2>
+            <div id="review-message" class="message" style="display: none;"></div>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label for="movieTitle">Movie Title:</label>
+                    <input type="text" id="movieTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewUsername">Your Name:</label>
+                    <input type="text" id="reviewUsername" placeholder="Appears as 'Guest' if not logged in" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Your Rating:</label>
+                    <div class="star-rating" id="starRating">
+                        <i class="far fa-star" data-value="1"></i>
+                        <i class="far fa-star" data-value="2"></i>
+                        <i class="far fa-star" data-value="3"></i>
+                        <i class="far fa-star" data-value="4"></i>
+                        <i class="far fa-star" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="ratingValue" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="reviewComments">Comments:</label>
+                    <textarea id="reviewComments" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Submit Review</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section class="review-list-section">
+            <h2>Latest Reviews</h2>
+            <div id="reviewList">
+                </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CinePulse. All rights reserved. Designed with <i class="fas fa-heart" style="color: red;"></i> by YourName.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/reviews.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinePulse - Movie News</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">CinePulse</a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Awards <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="vote.html">Vote</a>
+                        <a href="#">Past Winners (Dummy)</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Media <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="news.html">News</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                </li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="user-auth-section">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="user-info">
+                <span id="welcome-message"></span>
+                <button id="auth-button">Login / Register</button>
+            </div>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <div class="ticker-wrapper">
+        <div class="ticker-content">
+            <span><i class="fas fa-star"></i> Latest Review: "Interstellar" - A mind-bending masterpiece!</span>
+            <span><i class="fas fa-fire"></i> Trending: "Dune: Part Two" breaking box office records!</span>
+            <span><i class="fas fa-film"></i> New Trailer: "Blade Runner 2099" is coming soon!</span>
+            <span><i class="fas fa-trophy"></i> Awards Update: Nominations for Best Director unveiled!</span>
+            <span><i class="fas fa-star"></i> Latest Review: "The Matrix" - Still iconic after all these years!</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <section>
+            <h2 class="section-heading">Latest Movie News</h2>
+            <div class="news-grid" id="newsGrid">
+                </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CinePulse. All rights reserved. Designed with <i class="fas fa-heart" style="color: red;"></i> by YourName.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const newsData = [
+                {
+                    title: "New Sci-Fi Epic 'Stellar Frontier' Announced",
+                    summary: "A groundbreaking new science fiction film, 'Stellar Frontier,' is set to begin production next quarter...",
+                    image: "assets/images/news10.jpg" // Updated path
+                },
+                {
+                    title: "Director Christopher Nolan Teases Next Project",
+                    summary: "Following the success of his latest film, Christopher Nolan hinted at his next ambitious cinematic endeavor...",
+                    image: "assets/images/news11.jpg" // Updated path
+                },
+                {
+                    title: "Streaming Wars: New Exclusive Content Coming",
+                    summary: "Major streaming platforms are investing heavily in original content, with several highly anticipated series and movies on the horizon...",
+                    image: "assets/images/news12.jpg" // Updated path
+                },
+                {
+                    title: "Oscar Buzz: Early Predictions for 2026 Awards",
+                    summary: "Industry insiders are already weighing in on potential contenders for the 2026 Academy Awards, with a few surprising frontrunners...",
+                    image: "assets/images/news13.jpg" // Updated path
+                },
+                {
+                    title: "Classic Film Restorations Set for Theatrical Release",
+                    summary: "Several beloved classic films are getting stunning 4K restorations and limited theatrical runs, bringing them to new audiences...",
+                    image: "assets/images/news14.jpg" // Updated path
+                }
+            ];
+
+            const newsGrid = document.getElementById('newsGrid');
+
+            newsData.forEach(news => {
+                const newsCard = document.createElement('div');
+                newsCard.classList.add('news-card');
+                newsCard.innerHTML = `
+                    <img src="${news.image}" alt="${news.title}">
+                    <div class="news-card-info">
+                        <h3>${news.title}</h3>
+                        <p>${news.summary}</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                newsGrid.appendChild(newsCard);
+            });
+        });
+    </script>
+</body>
+</html>
